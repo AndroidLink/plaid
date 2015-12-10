@@ -15,27 +15,41 @@
   limitations under the License.
   -->
 
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="?android:listPreferredItemHeight"
-    android:paddingStart="@dimen/padding_normal_til"
-    android:paddingTop="@dimen/spacing_large"
+    android:paddingStart="@dimen/spacing_normal"
     android:paddingEnd="@dimen/padding_normal"
-    android:orientation="horizontal"
-    android:baselineAligned="false">
+    android:paddingBottom="@dimen/spacing_normal"
+    android:clipToPadding="false"
+    android:background="@color/selected_comment_background"
+    android:elevation="@dimen/z_card">
+
+    <Button
+        android:id="@+id/comment_votes"
+        android:layout_width="@dimen/fab_size"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:drawableTop="@drawable/ic_upvote"
+        android:textAppearance="@style/TextAppearance.CommentAuthor"
+        tools:text="33 likes"
+        style="?android:borderlessButtonStyle" />
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="0dp"
+        android:id="@+id/comment_reply_label"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginStart="@dimen/fab_size"
+        android:paddingStart="@dimen/spacing_micro"
         app:hintTextAppearance="@style/TextAppearance.FloatLabelHint">
 
         <EditText
-            android:id="@+id/comment"
-            android:hint="@string/comment"
+            android:id="@+id/comment_reply"
+            android:hint="@string/hint_reply"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -47,12 +61,13 @@
     </android.support.design.widget.TextInputLayout>
 
     <ImageButton
-        android:id="@+id/post_comment"
+        android:id="@+id/post_reply"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top"
+        android:layout_gravity="end"
         android:padding="@dimen/spacing_normal"
         android:src="@drawable/ic_add_comment_state"
-        android:background="?android:selectableItemBackgroundBorderless" />
+        android:background="?android:selectableItemBackgroundBorderless"
+        android:visibility="invisible" />
 
-</LinearLayout>
+</FrameLayout>
